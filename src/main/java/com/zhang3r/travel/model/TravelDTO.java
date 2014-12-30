@@ -10,6 +10,7 @@ public class TravelDTO {
 		FERRY,
 		CAR,
 		CRUISE,
+		OTHER
 
 	}
 
@@ -21,9 +22,12 @@ public class TravelDTO {
 	private String info;
 	private String confirmationNumber;
 	private String seatNumber;
+	private String departureCity;
+	private String arrivalCity;
 	private Date departure;
 	private Date arrival;
 	private double cost;
+	private String id;
 
 	public TravelDTO() {
 
@@ -115,6 +119,30 @@ public class TravelDTO {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getDepartureCity() {
+		return departureCity;
+	}
+
+	public void setDepartureCity(String departureCity) {
+		this.departureCity = departureCity;
+	}
+
+	public String getArrivalCity() {
+		return arrivalCity;
+	}
+
+	public void setArrivalCity(String arrivalCity) {
+		this.arrivalCity = arrivalCity;
 	}
 
 }

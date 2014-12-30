@@ -55,7 +55,10 @@ public class HomeController {
 			// and returned as JSON formatted string
 			CityDTO city = new CityDTO("New York");
 			TravelDTO plane = new TravelDTO();
+			plane.setTravelType(TravelDTO.TravelType.PLANE);
 			plane.setCost(32.50);
+			plane.setDepartureCity("Washington DC");
+			plane.setArrivalCity(city.getName());
 			city.getTravel().add(plane);
 			itService.addCity(city);
 			String json = gson.toJson(itService.getCityList());

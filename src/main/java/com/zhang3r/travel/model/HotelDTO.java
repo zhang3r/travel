@@ -7,7 +7,7 @@ public class HotelDTO {
 		AIRBNB,
 		HOTEL,
 		HOSTEL,
-		FAMILY,
+		OTHER,
 	}
 
 	private HotelType hotelType;
@@ -23,6 +23,7 @@ public class HotelDTO {
 	private Date arrival;
 	private Date departure;
 	private double cost;
+	private String id;
 
 	public HotelDTO() {
 
@@ -130,6 +131,14 @@ public class HotelDTO {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }

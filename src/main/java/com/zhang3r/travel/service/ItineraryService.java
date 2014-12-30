@@ -5,8 +5,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.zhang3r.travel.error.ApplicationError;
 import com.zhang3r.travel.model.CityDTO;
 
+/**
+ * still need 
+ * CREATE
+ * READ
+ * UPDATE
+ * DELETE
+ * @author rzhang
+ *
+ */
 @Service
 public class ItineraryService {
 	private List<CityDTO> cityList;
@@ -17,6 +27,16 @@ public class ItineraryService {
 
 	public void addCity(CityDTO city) {
 		getCityList().add(city);
+	}
+
+	//update
+	public CityDTO getCity(String id) {
+		for (CityDTO city : getCityList()) {
+			if (city.getId().equals(id)) {
+				return city;
+			}
+		}
+		throw new ApplicationError("invalid id");
 	}
 
 	public List<CityDTO> getCityList() {
