@@ -51,14 +51,14 @@ public class HomeController {
 		if (addCity.equals("addCity")) {
 			add = "adding City";
 			Gson gson = new Gson();
-
 			// convert java object to JSON format,
 			// and returned as JSON formatted string
 			CityDTO city = new CityDTO("New York");
 			TravelDTO plane = new TravelDTO();
 			plane.setCost(32.50);
 			city.getTravel().add(plane);
-			String json = gson.toJson(city);
+			itService.addCity(city);
+			String json = gson.toJson(itService.getCityList());
 			model.addAttribute("dataJson", json);
 		}
 		model.addAttribute("add", add + " " + addCity);

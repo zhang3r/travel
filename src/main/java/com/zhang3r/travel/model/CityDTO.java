@@ -9,6 +9,15 @@ public class CityDTO {
 	private String description;
 	private Date date;
 	private String title;
+	private String id;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	private List<TravelDTO> travel;
 	private List<HotelDTO> hotel;

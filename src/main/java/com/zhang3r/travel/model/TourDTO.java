@@ -11,6 +11,7 @@ public class TourDTO {
 	private String arrivalLocation;
 	private boolean isPickup;
 	private double cost;
+	private String id;
 
 	public TourDTO() {
 
@@ -78,6 +79,14 @@ public class TourDTO {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
