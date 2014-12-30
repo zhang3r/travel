@@ -83,7 +83,12 @@
 			</exclusions>
 			<scope>runtime</scope>
 		</dependency>
-
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.7.1</version>
+  		</dependency>
 		<!-- @Inject -->
 		<dependency>
 			<groupId>javax.inject</groupId>

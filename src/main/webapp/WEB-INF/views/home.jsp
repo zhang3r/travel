@@ -12,7 +12,10 @@
 <P>  The time on the server is ${serverTime}. </P>
 <p> ${add}</p>
 <form action="/travel/add" method="post">
-<input type="submit"  name="add" value="addCity">
+<div>
+<input type="submit"  name="add" value="addCity"/>
+</div>
 </form>
+<p>${dataJson}</p>
 </body>
 </html>
