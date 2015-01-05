@@ -13,8 +13,12 @@ $(function() {
 		name : "Wing Tip",
 		price : 259.00
 	} ];
+	
+
+	
 	// Get the HTML from the template in the script tag​
-	var theTemplateScript = $("#shoe-template").html();
+	var theTemplateScript = $("#city-template").html();
 	var theTemplate = Handlebars.compile(theTemplateScript);
-	$(".shoesNav").append(theTemplate(shoesData));
+	$(".cities").append(theTemplate(cityData));
+
 });

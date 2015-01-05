@@ -9,8 +9,10 @@
 <meta name="author" content="">
 <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
 <link href="resources/css/custom/home.css" rel="stylesheet">
-<script src="resources/js/thirdparty/handlebars-v2.0.0.js"></script>
 <title>Home</title>
+<script type="text/javascript">
+	var cityData = ${dataJson};
+</script>
 </head>
 <body>
 	<h1>Hello world!</h1>
@@ -27,20 +29,21 @@
 			</h2>
 		</div>
 	</form>
-	The List of Shoes:
-	<ul class="shoesNav"></ul>
-	<script id="shoe-template" type="x-handlebars-template">
+	The List of cities:
+	<div class="cities">
+		<script id="city-template" type="x-handlebars-template">
    {{#each this}}
-    <li class="shoes"><a href="/{{name}}">{{name}} -- Price: {{price}} </a></li>
+    <li class="cities">{{name}}</li>
 {{/each}}
 </script>
+	</div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
-
+	<script src="resources/js/thirdparty/handlebars-v2.0.0.js"></script>
 	<script src="resources/js/custom/home.js"></script>
 </body>
 </html>

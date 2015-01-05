@@ -26,12 +26,13 @@
 			</h2>
 		</div>
 	</form>
-
+    The List of Shoes:
+    <ul class="shoesNav"></ul>
 	<script id="shoe-template" type="x-handlebars-template">
    {{#each this}}
-    <li class="shoes"><a href="/{{name}}">{{name}} -- Price: {{price}} </a></li>
+    <li class="shoes"><a href="/{{name}}">{{name}} -- Price: {{price}} </a></li>​
 {{/each}}
-</script>
+​    </script>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
