@@ -3,7 +3,8 @@ package com.zhang3r.travel.model;
 import java.util.Date;
 
 public class TourDTO {
-	private String title;
+	private String name;
+	private String companyName;
 	private String description;
 	private Date departure;
 	private Date arrival;
@@ -15,14 +16,6 @@ public class TourDTO {
 
 	public TourDTO() {
 
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getDescription() {
@@ -87,6 +80,22 @@ public class TourDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 }

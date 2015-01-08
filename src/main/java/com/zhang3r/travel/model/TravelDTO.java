@@ -17,7 +17,7 @@ public class TravelDTO {
 	private TravelType travelType;
 	private String title;
 	private String name;
-	private String number;
+	private String reservationNumber;
 	private String passengerName;
 	private String info;
 	private String confirmationNumber;
@@ -57,12 +57,12 @@ public class TravelDTO {
 		this.name = name;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getReservationNumber() {
+		return reservationNumber;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setReservationNumber(String number) {
+		this.reservationNumber = number;
 	}
 
 	public String getPassengerName() {

@@ -46,9 +46,9 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute("add") String addCity, Model model) {
-		String add = "adding something";
-		if (addCity.equals("addCity")) {
+	public String add(@ModelAttribute("add") String add, Model model) {
+		
+		if (add.equals("addCity")) {
 			add = "adding City";
 			Gson gson = new Gson();
 			// convert java object to JSON format,
@@ -63,8 +63,16 @@ public class HomeController {
 			itService.addCity(city);
 			String json = gson.toJson(itService.getCityList());
 			model.addAttribute("dataJson", json);
+		}else if(add.equals("addTravel")){
+			
+		}else if(add.equals("addHotel")){
+			
+		}else if(add.equals("addTours")){
+			
+		}else{
+			
 		}
-		model.addAttribute("add", add + " " + addCity);
+		
 		return "home";
 
 	}

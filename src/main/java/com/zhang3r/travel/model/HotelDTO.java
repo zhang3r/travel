@@ -9,15 +9,29 @@ public class HotelDTO {
 		HOSTEL,
 		OTHER,
 	}
+	public enum RoomType {
+		DORMITORY,
+		SINGLE,
+		TWIN,
+		DOUBLE,
+		DOUBLE_DOUBLE,
+		TRIPLE,
+		QUEEN,
+		KING,
+		OTHER,
+	}
 
 	private HotelType hotelType;
-	private String title;
+	private String name;
+	private String confirmationNumber;
+	private String reservationNumber;
 	private String description;
 	private String address;
 	private String phoneNumber;
 	private String city;
 	private String country;
 	private String zipCode;
+	private RoomType roomType;
 	private int rating;
 	private int nightNumber;
 	private Date arrival;
@@ -35,14 +49,6 @@ public class HotelDTO {
 
 	public void setHotelType(HotelType hotelType) {
 		this.hotelType = hotelType;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getDescription() {
@@ -139,6 +145,38 @@ public class HotelDTO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getConfirmationNumber() {
+		return confirmationNumber;
+	}
+
+	public void setConfirmationNumber(String confirmationNumber) {
+		this.confirmationNumber = confirmationNumber;
+	}
+
+	public String getReservationNumber() {
+		return reservationNumber;
+	}
+
+	public void setReservationNumber(String reservationNumber) {
+		this.reservationNumber = reservationNumber;
+	}
+
+	public RoomType getRoomType() {
+		return roomType;
+	}
+
+	public void setRoomType(RoomType roomType) {
+		this.roomType = roomType;
 	}
 
 }

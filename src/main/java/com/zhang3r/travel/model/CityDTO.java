@@ -11,6 +11,10 @@ public class CityDTO {
 	private String title;
 	private String id;
 
+	private List<TravelDTO> travel;
+	private List<HotelDTO> hotel;
+	private List<TourDTO> tours;
+
 	public String getId() {
 		return id;
 	}
@@ -18,10 +22,6 @@ public class CityDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	private List<TravelDTO> travel;
-	private List<HotelDTO> hotel;
-	private List<TourDTO> tours;
 
 	public CityDTO(String name) {
 		this.name = name;
@@ -92,7 +92,7 @@ public class CityDTO {
 		this.tours = tours;
 	}
 
-	//restaurants?
-	//museums?
+	// restaurants?
+	// museums?
 
 }
