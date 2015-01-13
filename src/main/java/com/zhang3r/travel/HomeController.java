@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.zhang3r.travel.model.CityDTO;
 import com.zhang3r.travel.model.TravelDTO;
 import com.zhang3r.travel.service.ItineraryService;
@@ -46,23 +49,27 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute("add") String add, Model model) {
-		
+	@ResponseBody
+	public String add(@RequestBody String add, Model model) {
+		String json =add;
+		Gson gson = new GsonBuilder()
+		.setDateFormat("yyyy-MM-dd")
+		.create();
+		// convert java object to JSON format,
+		// and returned as JSON formatted string
+		CityDTO city= gson.fromJson(json, CityDTO.class);
+		TravelDTO plane = new TravelDTO();
+		plane.setTravelType(TravelDTO.TravelType.PLANE);
+		plane.setCost(32.50);
+		plane.setDepartureCity("Washington DC");
+		plane.setArrivalCity(city.getName());
+		city.getTravel().add(plane);
+		itService.addCity(city);
+		json = gson.toJson(itService.getCityList());
 		if (add.equals("addCity")) {
-			add = "adding City";
-			Gson gson = new Gson();
-			// convert java object to JSON format,
-			// and returned as JSON formatted string
-			CityDTO city = new CityDTO("New York");
-			TravelDTO plane = new TravelDTO();
-			plane.setTravelType(TravelDTO.TravelType.PLANE);
-			plane.setCost(32.50);
-			plane.setDepartureCity("Washington DC");
-			plane.setArrivalCity(city.getName());
-			city.getTravel().add(plane);
-			itService.addCity(city);
-			String json = gson.toJson(itService.getCityList());
-			model.addAttribute("dataJson", json);
+			
+			
+			//model.addAttribute("dataJson", json);
 		}else if(add.equals("addTravel")){
 			
 		}else if(add.equals("addHotel")){
@@ -73,7 +80,7 @@ public class HomeController {
 			
 		}
 		
-		return "home";
+		return json;
 
 	}
 

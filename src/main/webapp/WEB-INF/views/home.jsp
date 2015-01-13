@@ -10,28 +10,54 @@
 <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
 <link href="resources/css/custom/home.css" rel="stylesheet">
 <title>Home</title>
-<script type="text/javascript">
-	var cityData = ${dataJson};
-</script>
 </head>
 <body>
 	<h1>Hello world!</h1>
 
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#mainModal" data-whatever="City">Add City</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#mainModal" data-whatever="@fat">Open modal for
+		@fat</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#mainModal" data-whatever="@twbootstrap">Open
+		modal for @twbootstrap</button>
+
+
+	<div class="modal fade" id="mainModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="mainModalLabel">New City</h4>
+				</div>
+				<div class="modal-body">
+					<form id="cityform">
+						<label for="city-name" class="control-label">*City Name:</label> <input
+							type="text" class="form-control" id="city-name" name="name"> <label
+							for="city-date" class="control-label" >Date:</label> <input
+							type="date" class="form-control datepicker" id="city-date" name="date"> <label
+							for="message-text" class="control-label">Description:</label>
+						<textarea class="form-control" id="message-text" name="description"></textarea>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						onclick="addCityform()">Send message</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<P>The time on the server is ${serverTime}.</P>
 	<p>${add}</p>
 	<p>${dataJson}</p>
-	<form name="myform" action="/travel/add" method="post">
-		<div>
-			<h2>
-				<input type='hidden' name='add' value='addCity' /> <span
-					class="label label-primary"><a
-					href="javascript: submitform()">add city</a></span>
-			</h2>
-		</div>
-	</form>
-	<p>
-	The List of cities:
-	</p>
+	<p>The List of cities:</p>
 	<div class="cities"></div>
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
