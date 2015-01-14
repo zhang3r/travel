@@ -40,30 +40,28 @@ public class HomeController {
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
+		Gson gson = new GsonBuilder()
+		.setDateFormat("MM/dd/yyyy")
+		.create();
 		String formattedDate = dateFormat.format(date);
-
+		String json = gson.toJson(itService.getCityList());
 		model.addAttribute("serverTime", formattedDate);
+		model.addAttribute("jsonData", json );
 
 		return "home";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/addCity", method = RequestMethod.POST)
 	@ResponseBody
 	public String add(@RequestBody String add, Model model) {
 		String json =add;
 		Gson gson = new GsonBuilder()
-		.setDateFormat("yyyy-MM-dd")
+		.setDateFormat("MM/dd/yyyy")
 		.create();
 		// convert java object to JSON format,
 		// and returned as JSON formatted string
 		CityDTO city= gson.fromJson(json, CityDTO.class);
-		TravelDTO plane = new TravelDTO();
-		plane.setTravelType(TravelDTO.TravelType.PLANE);
-		plane.setCost(32.50);
-		plane.setDepartureCity("Washington DC");
-		plane.setArrivalCity(city.getName());
-		city.getTravel().add(plane);
+		city.generateId();
 		itService.addCity(city);
 		json = gson.toJson(itService.getCityList());
 		if (add.equals("addCity")) {

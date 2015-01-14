@@ -1,10 +1,13 @@
 
 $(function() {
 	// Get the HTML from the template in the script tag​
-	var theTemplateScript = $("#city-template").html();
-	var theTemplate = Handlebars.compile(theTemplateScript);
-	$('.datepicker').datepicker();
-	// $(".cities").append(theTemplate(cityData));
+	
+	var minDateObj= new Date();
+	var pickerOpts = {minDate: new Date()
+			};  
+	handlebarsTemplate();
+	$('.datepicker').datepicker(pickerOpts);
+
 
 });
 
@@ -26,9 +29,10 @@ function addCityform() {
 	
 	$.ajax({
 		type : "POST",
-		url : "/travel/add",
+		url : "/travel/addCity",
 		data :  formData,
-		success : function() {
+		success : function(data) {cityData=data;
+		handlebarsTemplate();
 		},
 		dataType : "json",
 		contentType : "application/json"
@@ -36,7 +40,7 @@ function addCityform() {
 	});
 	 $('#mainModal').modal('hide');
 }
-function ConvertFormToJSON(form){
+function ConvertFormToJSON(form){ 
     var array = jQuery(form).serializeArray();
     var json = {};
     
@@ -46,3 +50,9 @@ function ConvertFormToJSON(form){
     
     return json;
 }
+function handlebarsTemplate(){
+	var theTemplateScript = $("#city-template").html();
+	var theTemplate = Handlebars.compile(theTemplateScript);
+	$(".cities").empty().append(theTemplate(cityData));
+}
+

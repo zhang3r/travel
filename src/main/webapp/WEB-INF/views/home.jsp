@@ -9,11 +9,13 @@
 <meta name="author" content="">
 <link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
 <link href="resources/css/custom/home.css" rel="stylesheet">
+<script type="text/javascript">
+var cityData=${jsonData};
+</script>
 <title>Home</title>
 </head>
 <body>
 	<h1>Hello world!</h1>
-
 	<button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#mainModal" data-whatever="City">Add City</button>
 	<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -40,7 +42,7 @@
 						<label for="city-name" class="control-label">*City Name:</label> <input
 							type="text" class="form-control" id="city-name" name="name"> <label
 							for="city-date" class="control-label" >Date:</label> <input
-							type="date" class="form-control datepicker" id="city-date" name="date"> <label
+							type="text" class="form-control datepicker" id="city-date" name="date"> <label
 							for="message-text" class="control-label">Description:</label>
 						<textarea class="form-control" id="message-text" name="description"></textarea>
 					</form>
@@ -63,6 +65,7 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
 	<script src="resources/js/thirdparty/handlebars-v2.0.0.js"></script>
