@@ -41,7 +41,7 @@ public class ItineraryService {
 
 	public List<CityDTO> getCityList() {
 		if (cityList == null) {
-			cityList = new ArrayList<>();
+			cityList = new ArrayList<CityDTO>();
 		}
 		return cityList;
 	}

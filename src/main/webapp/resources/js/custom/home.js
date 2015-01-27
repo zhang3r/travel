@@ -7,23 +7,24 @@ $(function() {
 			};  
 	handlebarsTemplate();
 	$('.datepicker').datepicker(pickerOpts);
+	$('.selectpicker').selectpicker();
 
 
 });
 
-$('#mainModal').on('show.bs.modal', function(event) {
-	var button = $(event.relatedTarget) // Button that triggered the modal
-	var recipient = button.data('whatever') // Extract info from data-*
+$('.modal').on('show.bs.modal', function(event) {
+	var button = $(event.relatedTarget); // Button that triggered the modal
+	var recipient = button.data('whatever'); // Extract info from data-*
 											// attributes
 	// If necessary, you could initiate an AJAX request here (and then do the
 	// updating in a callback).
 	// Update the modal's content. We'll use jQuery here, but you could use a
 	// data binding library or other methods instead.
 	var modal = $(this)
-	modal.find('.modal-title').text('New ' + recipient)
+	modal.find('.cityId').val(recipient);
 
 });
-function addCityform() {
+function addCityForm() {
 
 	var formData = JSON.stringify(ConvertFormToJSON($("#cityform")));
 	
@@ -38,8 +39,61 @@ function addCityform() {
 		contentType : "application/json"
 			
 	});
-	 $('#mainModal').modal('hide');
+	 $('#cityModal').modal('hide');
 }
+function addTravelForm() {
+
+	var formData = JSON.stringify(ConvertFormToJSON($("#travelform")));
+	
+	$.ajax({
+		type : "POST",
+		url : "/travel/addTravel",
+		data :  formData,
+		success : function(data) {cityData=data;
+		handlebarsTemplate();
+		},
+		dataType : "json",
+		contentType : "application/json"
+			
+	});
+	 $('#travelModal').modal('hide');
+}
+function addTravelForm() {
+
+	var formData = JSON.stringify(ConvertFormToJSON($("#toursform")));
+	
+	$.ajax({
+		type : "POST",
+		url : "/travel/addTours",
+		data :  formData,
+		success : function(data) {cityData=data;
+		handlebarsTemplate();
+		},
+		dataType : "json",
+		contentType : "application/json"
+			
+	});
+	 $('#toursModal').modal('hide');
+}
+
+function addHotelForm() {
+
+	var formData = JSON.stringify(ConvertFormToJSON($("#hotelform")));
+	
+	$.ajax({
+		type : "POST",
+		url : "/travel/addHotel",
+		data :  formData,
+		success : function(data) {cityData=data;
+		handlebarsTemplate();
+		},
+		dataType : "json",
+		contentType : "application/json"
+			
+	});
+	 $('#hotelModal').modal('hide');
+}
+
 function ConvertFormToJSON(form){ 
     var array = jQuery(form).serializeArray();
     var json = {};

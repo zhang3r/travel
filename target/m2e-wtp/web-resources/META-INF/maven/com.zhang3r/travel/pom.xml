@@ -114,6 +114,17 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<!-- MONGO -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.12.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.6.1.RELEASE</version>
+		</dependency>
 
 		<!-- Test -->
 		<dependency>
@@ -188,3 +199,4 @@
 		</plugins>
 	</build>
 </project>
+

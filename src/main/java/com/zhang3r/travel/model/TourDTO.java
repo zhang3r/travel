@@ -13,6 +13,7 @@ public class TourDTO {
 	private boolean isPickup;
 	private double cost;
 	private String id;
+	private String cityId;
 
 	public TourDTO() {
 
@@ -96,6 +97,14 @@ public class TourDTO {
 
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
+	}
+
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
 	}
 
 }

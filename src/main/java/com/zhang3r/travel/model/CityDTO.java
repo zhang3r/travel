@@ -3,13 +3,13 @@ package com.zhang3r.travel.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
+
 public class CityDTO {
 	private String name;
 	private String description;
 	private Date date;
 	private String title;
-	private UUID id;
+	private String id;
 
 	private List<TravelDTO> travel;
 	private List<HotelDTO> hotel;
@@ -17,18 +17,15 @@ public class CityDTO {
 
 	public CityDTO(String name) {
 		this.name = name;
-		this.id = UUID.randomUUID();
 	}
 
-	public void generateId(){
-		this.id=UUID.randomUUID();
-	}
+	
 	public String getId() {
-		return id.toString();
+		return id;
 	}
 
 	public void setId(String id) {
-		this.id = UUID.fromString(id);
+		this.id = id;
 	}
 
 

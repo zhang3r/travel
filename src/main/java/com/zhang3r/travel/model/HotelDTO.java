@@ -38,6 +38,7 @@ public class HotelDTO {
 	private Date departure;
 	private double cost;
 	private String id;
+	private String cityId;
 
 	public HotelDTO() {
 
@@ -177,6 +178,14 @@ public class HotelDTO {
 
 	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
+	}
+
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
 	}
 
 }

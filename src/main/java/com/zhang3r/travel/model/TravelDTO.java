@@ -28,9 +28,10 @@ public class TravelDTO {
 	private Date arrival;
 	private double cost;
 	private String id;
+	private String cityId;
 
-	public TravelDTO() {
-
+	public TravelDTO(String name) {
+		this.name=name;
 	}
 
 	public TravelType getTravelType() {
@@ -143,6 +144,19 @@ public class TravelDTO {
 
 	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
+	}
+
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
+	}
+
+	public void generateId() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
