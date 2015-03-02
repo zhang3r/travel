@@ -1,24 +1,15 @@
 package com.zhang3r.travel.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class HotelDTO {
 	public enum HotelType {
-		AIRBNB,
-		HOTEL,
-		HOSTEL,
-		OTHER,
+		AIRBNB, HOTEL, HOSTEL, OTHER,
 	}
+
 	public enum RoomType {
-		DORMITORY,
-		SINGLE,
-		TWIN,
-		DOUBLE,
-		DOUBLE_DOUBLE,
-		TRIPLE,
-		QUEEN,
-		KING,
-		OTHER,
+		DORMITORY, SINGLE, TWIN, DOUBLE, DOUBLE_DOUBLE, TRIPLE, QUEEN, KING, OTHER,
 	}
 
 	private HotelType hotelType;
@@ -41,7 +32,7 @@ public class HotelDTO {
 	private String cityId;
 
 	public HotelDTO() {
-
+		setId(UUID.randomUUID().toString());
 	}
 
 	public HotelType getHotelType() {

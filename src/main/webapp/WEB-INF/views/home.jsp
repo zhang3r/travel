@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false"%>
 <html>
 <head>
@@ -32,23 +33,29 @@
 					<h4 class="modal-title" id="mainModalLabel">New City</h4>
 				</div>
 				<div class="modal-body">
-					<form id="cityform">
-						<label for="city-name" class="control-label">*City Name:</label> <input
-							type="text" class="form-control" id="city-name" name="name">
-						<label for="city-date" class="control-label">Date:</label> <input
-							type="text" class="form-control datepicker" id="city-date"
-							name="date"> <label for="message-text"
-							class="control-label">Description:</label>
-						<textarea class="form-control" id="message-text"
-							name="description"></textarea>
-					</form>
+					<form:form modelAttribute="cityForm" method="post" action="addCity"
+						name="cityForm" id="cityform">
+						<label for="city-name" class="control-label">*City Name:</label>
+						<form:input type="text" class="form-control" id="city-name"
+							name="name" path="name" />
+						<label for="city-date" class="control-label">Date:</label>
+						<form:input type="text" class="form-control datepicker"
+							id="city-date" name="date" path="date" />
+						<label for="message-text" class="control-label">Description:</label>
+						<form:textarea class="form-control" id="message-text"
+							name="description" path="description"></form:textarea>
+
+						<div class="modal-footer">
+							<form:button path="" type="button" class="btn btn-default"
+								data-dismiss="modal">Close</form:button>
+							<form:button type="submit" class="btn btn-primary">Save</form:button>
+
+
+						</div>
+					</form:form>
 
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
-						onclick="addCityForm()">Send message</button>
-				</div>
+
 			</div>
 		</div>
 	</div>
@@ -66,38 +73,57 @@
 					<h4 class="modal-title" id="mainModalLabel">New City</h4>
 				</div>
 				<div class="modal-body">
-					<form id="travelform">
+					<form:form modelAttribute="travelForm" method="post"
+						action="addTravel" name="travelFrom" id="travelform">
 						<input type="hidden" class="form-control cityId"
-							id="travel-city-id" name="cityId"> <label
-							for="travel-name" class="control-label">*Travel Name:</label> <input
-							type="text" class="form-control" id="travel-name" name="name">
+							id="travel-city-id" name="cityId" />
+						<label for="travel-name" class="control-label">*Travel
+							Name:</label>
+						<form:input type="text" path="name" class="form-control"
+							id="travel-name" name="name" />
 						<label for="travel-departure-date" class="control-label">Departure
-							Date:</label> <input type="text" class="form-control datepicker"
-							id="travel-departure-date" name="departure"> <label
-							for="travel-arrival-date" class="control-label">Arrival
-							Date:</label> <input type="text" class="form-control datepicker"
-							id="travel-arrival-date" name="arrival"> <label
-							for="travel-name" class="control-label">Departure City:</label> <input
-							type="text" class="form-control" id="travel-departureCity-name"
-							name="departureCity"> <label for="travel-name"
-							class="control-label">Arrival City:</label> <input type="text"
-							class="form-control" id="travel-arrvialCity-name"
-							name="arrivalCity"> <label for="travel-name"
-							class="control-label">Seat Number:</label> <input type="text"
-							class="form-control" id="travel-seat" name="seatNumber">
+							Date:</label>
+						<form:input path="departure" type="text"
+							class="form-control datepicker" id="travel-departure-date"
+							name="departure" />
+						<label for="travel-arrival-date" class="control-label">Arrival
+							Date:</label>
+						<form:input path="arrival" type="text"
+							class="form-control datepicker" id="travel-arrival-date"
+							name="arrival" />
+						<label for="travel-name" class="control-label">Departure
+							City:</label>
+						<form:input path="departureCity" type="text" class="form-control"
+							id="travel-departureCity-name" name="departureCity" />
+						<label for="travel-name" class="control-label">Arrival
+							City:</label>
+						<form:input path="arrivalCity" type="text" class="form-control"
+							id="travel-arrvialCity-name" name="arrivalCity" />
+						<label for="travel-name" class="control-label">Seat
+							Number:</label>
+						<form:input path="seatNumber" type="text" class="form-control"
+							id="travel-seat" name="seatNumber" />
 						<label for="travel-name" class="control-label">Confirmation
-							Number:</label> <input type="text" class="form-control"
-							id="travel-confirmation-number" name="confirmationNumber">
+							Number:</label>
+						<form:input path="confirmationNumber" type="text"
+							class="form-control" id="travel-confirmation-number"
+							name="confirmationNumber" />
 						<label for="travel-name" class="control-label">Reservation
-							Number:</label> <input type="text" class="form-control"
-							id="travel-reservation-number" name="reservationNumber">
+							Number:</label>
+						<form:input path="reservationNumber" type="text"
+							class="form-control" id="travel-reservation-number"
+							name="reservationNumber" />
 
 						<label for="travel-name" class="control-label">Passenger
-							Name:</label> <input type="text" class="form-control" id="travel-name"
-							name="passengerName"> <label for="travel-name"
-							class="control-label">Cost:</label> <input type="number"
-							class="form-control" id="travel-price" name="cost"> <label
-							for="travel-name" class="control-label">Travel Type:</label> <select
+							Name:</label>
+						<form:input path="passengerName" type="text" class="form-control"
+							id="travel-name" name="passengerName" />
+						<label for="travel-name" class="control-label">Cost:</label>
+						<form:input path="cost" type="number" class="form-control"
+							id="travel-price" name="cost" />
+						<label for="travel-name" class="control-label">Travel
+							Type:</label>
+						<form:select path="travelType"
 							class="form-control btn dropdown-toggle selectpicker btn-default"
 							name="travelType">
 
@@ -108,22 +134,16 @@
 							<option>CAR</option>
 							<option>CRUISE</option>
 							<option>OTHER</option>
-						</select> <label for="message-text" class="control-label">Additional
-							info:</label>
-						<textarea class="form-control" id="message-text"
-							name="description"></textarea>
+						</form:select>
+					
+						
+						<div class="modal-footer">
+							<form:button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</form:button>
+							<form:button type="submit" class="btn btn-primary">Save</form:button>
+						</div>
+					</form:form>
 
-						<label for="message-text" class="control-label">Additional
-							notes:</label>
-						<textarea class="form-control" id="message-text"
-							name="description"></textarea>
-					</form>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
-						onclick="addTravelForm()">Send message</button>
 				</div>
 			</div>
 		</div>
@@ -232,22 +252,20 @@
 							name="departure"> <label for="tours-arrival-date"
 							class="control-label">Arrival Date:</label> <input type="text"
 							class="form-control datepicker" id="tours-arrival-date"
-							name="arrival"> 
-							<label for="tours-name" class="control-label">Tour Company Name:</label>
-						<input type="text" class="form-control" id="tours-name"
-							name="companyName">
-							<label for="tours-name" class="control-label">Departure Location:</label>
-						<input type="text" class="form-control" id="tours-name"
-							name="departureLocation">
-							<label for="tours-name" class="control-label">Arrival Location:</label>
-						<input type="text" class="form-control" id="tours-name"
-							name="arrivalLocation">
-							<label for="tours-name" class="control-label">Pickup Location:</label>
-						<input type="text" class="form-control" id="tours-name"
-							name="isPickup">
-							<label for="tours-name" class="control-label">Cost:</label>
-						<input type="text" class="form-control" id="tours-name"
-							name="cost">
+							name="arrival"> <label for="tours-name"
+							class="control-label">Tour Company Name:</label> <input
+							type="text" class="form-control" id="tours-name"
+							name="companyName"> <label for="tours-name"
+							class="control-label">Departure Location:</label> <input
+							type="text" class="form-control" id="tours-name"
+							name="departureLocation"> <label for="tours-name"
+							class="control-label">Arrival Location:</label> <input
+							type="text" class="form-control" id="tours-name"
+							name="arrivalLocation"> <label for="tours-name"
+							class="control-label">Pickup Location:</label> <input type="text"
+							class="form-control" id="tours-name" name="isPickup"> <label
+							for="tours-name" class="control-label">Cost:</label> <input
+							type="text" class="form-control" id="tours-name" name="cost">
 						<label for="message-text" class="control-label">Description:</label>
 						<textarea class="form-control" id="message-text"
 							name="description"></textarea>

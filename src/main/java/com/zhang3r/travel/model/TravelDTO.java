@@ -1,17 +1,13 @@
 package com.zhang3r.travel.model;
 
 import java.util.Date;
+import java.util.UUID;
+
+import org.springframework.data.annotation.Id;
 
 public class TravelDTO {
 	public enum TravelType {
-		PLANE,
-		RAIL,
-		BUS,
-		FERRY,
-		CAR,
-		CRUISE,
-		OTHER
-
+		PLANE, RAIL, BUS, FERRY, CAR, CRUISE, OTHER
 	}
 
 	private TravelType travelType;
@@ -27,11 +23,18 @@ public class TravelDTO {
 	private Date departure;
 	private Date arrival;
 	private double cost;
+	@Id
 	private String id;
 	private String cityId;
 
+	public TravelDTO() {
+		setId(UUID.randomUUID().toString());
+
+	}
+
 	public TravelDTO(String name) {
-		this.name=name;
+		this();
+		this.name = name;
 	}
 
 	public TravelType getTravelType() {
@@ -156,7 +159,7 @@ public class TravelDTO {
 
 	public void generateId() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

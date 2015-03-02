@@ -1,6 +1,7 @@
 package com.zhang3r.travel.model;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class TourDTO {
 	private String name;
@@ -16,7 +17,7 @@ public class TourDTO {
 	private String cityId;
 
 	public TourDTO() {
-
+		setId(UUID.randomUUID().toString());
 	}
 
 	public String getDescription() {

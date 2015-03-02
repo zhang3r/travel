@@ -26,7 +26,7 @@ $('.modal').on('show.bs.modal', function(event) {
 });
 function addCityForm() {
 
-	var formData = JSON.stringify(ConvertFormToJSON($("#cityform")));
+	var formData =($("#cityform")).serialize();
 	
 	$.ajax({
 		type : "POST",
