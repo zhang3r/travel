@@ -1,6 +1,7 @@
 package com.zhang3r.travel.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,6 +62,9 @@ public class ItineraryService {
 	public void updateCity(CityDTO city) {
 		logger.info("updating city");
 		Update update = new Update();
+		update.set("name",city.getName());
+		update.set("description",city.getDescription());
+		update.set("date", city.getDate());
 		update.set("hotel",city.getHotel());
 		update.set("tours",city.getTours());
 		update.set("travel",city.getTravel());
