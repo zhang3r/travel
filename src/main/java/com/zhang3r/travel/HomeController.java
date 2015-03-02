@@ -94,44 +94,38 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/addHotel", method = RequestMethod.POST)
-	@ResponseBody
-	public String addHotel(@RequestBody String add, Model model) {
-		String json = add;
-		Gson gson = new GsonBuilder().setDateFormat("MM/dd/yyyy").create();
-		// convert java object to JSON format,
-		// and returned as JSON formatted string
-		HotelDTO hotel = gson.fromJson(json, HotelDTO.class);
-		hotel.setId(uuidService.generateId());
-		for (CityDTO city : itService.listCities()) {
-			if (city.getId().equals(hotel.getCityId())) {
-				city.getHotel().add(hotel);
-			}
+	public String addHotel(HttpServletRequest request,
+	@ModelAttribute("hotelForm") HotelDTO hotel,
+	BindingResult result, Model model) {
+		// get city
+		CityDTO city = itService.findCity(hotel.getCityId());
+		// update city
+		if (city != null) {
+			city.getHotel().add(hotel);
+			itService.updateCity(city);
+		}else{
+			logger.info("no city found");
 		}
-		// itService.addCity(city);
-		json = gson.toJson(itService.listCities());
 
-		return json;
-
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/addTours", method = RequestMethod.POST)
-	@ResponseBody
-	public String addTours(@RequestBody String add, Model model) {
-		String json = add;
-		Gson gson = new GsonBuilder().setDateFormat("MM/dd/yyyy").create();
-		// convert java object to JSON format,
-		// and returned as JSON formatted string
-		TourDTO tour = gson.fromJson(json, TourDTO.class);
-		tour.setId(uuidService.generateId());
-		for (CityDTO city : itService.listCities()) {
-			if (city.getId().equals(tour.getCityId())) {
-				city.getTours().add(tour);
-			}
+	public String addTours(HttpServletRequest request,
+			@ModelAttribute("toursForm") TourDTO tour,
+			BindingResult result, Model model) {
+		// get city
+		CityDTO city = itService.findCity(tour.getCityId());
+		// update city
+		if (city != null) {
+		
+			city.getTours().add(tour);
+			itService.updateCity(city);
+		}else{
+			logger.info("no city found");
 		}
-		// itService.addCity(city);
-		json = gson.toJson(itService.listCities());
 
-		return json;
+		return "redirect:/";
 
 	}
 
@@ -154,13 +148,13 @@ public class HomeController {
 	public TravelDTO getTravelForm() {
 		return new TravelDTO();
 	}
-	// @ModelAttribute("hotelForm")
-	// public HotelDTO getHotelForm() {
-	// return new HotelDTO();
-	// }
-	// @ModelAttribute("toursForm")
-	// public TourDTO getToursForm() {
-	// return new TourDTO();
-	// }
+	 @ModelAttribute("hotelForm")
+	 public HotelDTO getHotelForm() {
+	 return new HotelDTO();
+	 }
+	 @ModelAttribute("toursForm")
+	 public TourDTO getTourForm() {
+	 return new TourDTO();
+	 }
 
 }

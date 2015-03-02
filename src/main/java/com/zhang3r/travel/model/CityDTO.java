@@ -79,28 +79,28 @@ public class CityDTO {
 	}
 
 	public List<HotelDTO> getHotel() {
+		if (hotel == null) {
+			hotel = new ArrayList<>();
+		}
 		return hotel;
 	}
 
 	public void setHotel(List<HotelDTO> hotel) {
-		if (hotel == null) {
-			hotel = new ArrayList<>();
-		}
 		this.hotel = hotel;
 	}
 
 	public List<TourDTO> getTours() {
+		if (tours == null) {
+			tours = new ArrayList<>();
+		}
 		return tours;
 	}
 
 	public void setTours(List<TourDTO> tours) {
-		if (tours == null) {
-			tours = new ArrayList<>();
-		}
+		
 		this.tours = tours;
 	}
 
-	// restaurants?
-	// museums?
+	
 
 }

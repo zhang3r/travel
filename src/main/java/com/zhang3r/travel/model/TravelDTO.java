@@ -162,4 +162,9 @@ public class TravelDTO {
 
 	}
 
+	public String toString() {
+		return "tour " + name;
+
+	}
+
 }
