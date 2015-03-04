@@ -8,12 +8,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="resources/css/bootstrap/bootstrap.css" rel="stylesheet">
-<link href="resources/css/custom/home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/custom/home.css" rel="stylesheet">
 <script type="text/javascript">
-var cityData = ${jsonData};
+	var cityData = ${jsonData};
 </script>
-<script src="resources/js/custom/json.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom/json.js"></script>
 <title>Home</title>
 </head>
 <body>
@@ -36,6 +36,8 @@ var cityData = ${jsonData};
 				<div class="modal-body">
 					<form:form modelAttribute="cityForm" method="post" action="addCity"
 						name="cityForm" id="cityform">
+						<form:input path="id" type="hidden" class="form-control cityId"
+							id="travel-city-id" name="id" />
 						<label for="city-name" class="control-label">*City Name:</label>
 						<form:input type="text" class="form-control" id="city-name"
 							name="name" path="name" />
@@ -268,7 +270,7 @@ var cityData = ${jsonData};
 				<div class="modal-body">
 					<form:form modelAttribute="toursForm" method="post"
 						action="addTours" name="toursForm" id="toursForm">
-					<form:input path="cityId" type="hidden"
+						<form:input path="cityId" type="hidden"
 							class="form-control cityId" id="tours-city-id" name="cityId" />
 						<label for="tours-name" class="control-label">*Tour Name:</label>
 						<form:input path="name" type="text" class="form-control"
@@ -313,8 +315,8 @@ var cityData = ${jsonData};
 			</div>
 		</div>
 	</div>
-	<P>The time on the server is ${serverTime}.</P>
-	<p>${add}</p>
+
+
 	<p>${dataJson}</p>
 	<p>The List of cities:</p>
 	<div class="cities"></div>
@@ -324,9 +326,9 @@ var cityData = ${jsonData};
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="resources/js/bootstrap/bootstrap.min.js"></script>
-	<script src="resources/js/thirdparty/handlebars-v2.0.0.js"></script>
-	<script src="resources/js/custom/home.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/thirdparty/handlebars-v2.0.0.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/custom/home.js"></script>
 	<script id="city-template" type="x-handlebars-template">
    {{#each this}}
     <div class="cities">
@@ -334,6 +336,13 @@ city name:{{name}}<br/>
 city description:{{description}}<br/>
 date:{{date}}<br/>
 id:{{id}}<br/>
+<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#cityModal" data-whatever={{id}}>Edit City</button>
+
+
+<button type="Submit"  id="deleteCity" class="btn btn-primary" onClick = "deleteCity('{{id}}')">Delete</button>
+
+<p>Travel</p>
 {{#each travel}}
 travel type:{{travelType}}<br/>
 company name:{{name}}<br/>
@@ -347,7 +356,12 @@ departure time:{{departure}}<br/>
 arrival time:{{arrival}}<br/>
 cost:{{cost}}<br/>
 id:{{id}}<br/>
-<p>Travel</p>
+<button type="Submit"  id="deleteTravel" class="btn btn-primary" onClick = "deleteTravel('{{id}}')">Delete</button>
+<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#travelModal" data-whatever={{id}}>Edit Travel</button>
+
+
+
 {{/each}}
 <button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#travelModal" data-whatever={{id}}>Add Travel</button>
@@ -371,6 +385,12 @@ id:{{id}}<br/>
 {{departure}}
 {{cost}}
 {{id}}
+<button type="Submit"  id="deleteHotel" class="btn btn-primary" onClick = "deleteHotel('{{id}}')">Delete</button>
+<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#hotelModal" data-whatever={{id}}>Edit hotel</button>
+
+
+
 		{{/each}}
 <button type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#hotelModal" data-whatever={{id}}>Add Hotel</button>
@@ -386,7 +406,9 @@ id:{{id}}<br/>
 {{isPickup}}
 {{cost}}
 {{id}}
-
+<button type="Submit"  id="deleteTours" class="btn btn-primary" onClick = "deleteTour('{{id}}')">Delete</button>
+<button type="button" class="btn btn-primary" data-toggle="modal"
+		data-target="#toursModal" data-whatever={{id}}>Edit hotel</button>
 		{{/each}}
 
 <button type="button" class="btn btn-primary" data-toggle="modal"

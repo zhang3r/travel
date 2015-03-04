@@ -15,6 +15,8 @@ public class CityDTO {
 	private String title;
 	@Id
 	private String id;
+	
+	private String userId;
 
 	private List<TravelDTO> travel;
 	private List<HotelDTO> hotel;
@@ -25,6 +27,14 @@ public class CityDTO {
 
 	public CityDTO(String name) {
 		this.name = name;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getId() {
